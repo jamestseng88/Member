@@ -3,6 +3,7 @@ package com.fju.member;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,13 +11,17 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 private static final int RCL =10;
+    private EditText edgender;
+    private EditText edage;
+    private EditText edname;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EditText edname = findViewById(R.id.name);
-        EditText edaccount = findViewById(R.id.age);
-        EditText edpassword = findViewById(R.id.gender);
+        edname = findViewById(R.id.name);
+        edage = findViewById(R.id.age);
+        edgender = findViewById(R.id.gender);
 
 
     }
@@ -30,11 +35,11 @@ private static final int RCL =10;
 
         if(requestCode==RCL){
             if(resultCode==RESULT_OK){
-                edname.setText(getSharedPreferences("test",MODE_PRIVATE)
-                        .getString("NAME",""));
-                edaccount.setText(getSharedPreferences("test",MODE_PRIVATE)
+                edname.setText(getSharedPreferences("test", Context.MODE_PRIVATE)
+                        .getString("NICKNAME",""));
+                edage.setText(getSharedPreferences("test",Context.MODE_PRIVATE)
                         .getString("AGE",""));
-                edpassword.setText(getSharedPreferences("test",MODE_PRIVATE)
+                edgender.setText(getSharedPreferences("test",Context.MODE_PRIVATE)
                         .getString("GENDER",""));
             }else {
                 finish();

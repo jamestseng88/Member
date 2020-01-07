@@ -2,6 +2,7 @@ package com.fju.member;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,12 +23,13 @@ public class AgeActivity extends AppCompatActivity {
         EditText etag = findViewById(R.id.age1);
         ageString = etag.getText().toString();
         Intent intent3 = new Intent(AgeActivity.this, GenderActivity.class);
-        SharedPreferences preferences = getSharedPreferences("test",MODE_PRIVATE);
-        preferences.edit()
+        SharedPreferences preferences = getSharedPreferences("test", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor
                 .putString("AGE", ageString)
                 .commit();
         startActivityForResult(intent3, 0);
-        setResult(RESULT_OK);
+        AgeActivity.this.setResult(RESULT_OK);
         finish();
     }
 }
